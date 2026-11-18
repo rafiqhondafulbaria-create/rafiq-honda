@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#142b45"><title>রফিক হোন্ডা | শোরুম ম্যানেজমেন্ট</title>
+<style>
+:root{--navy:#142b45;--blue:#245b91;--bg:#f3f6fa;--line:#dce4ed;--muted:#64748b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,"Noto Sans Bengali",sans-serif;color:#172334}
+header{background:var(--navy);color:white;padding:22px max(16px,calc((100% - 1080px)/2));}
+header h1{margin:0;font-size:25px}header p{margin:5px 0 0;color:#d5dfeb;font-size:13px}
+main{max-width:1080px;margin:20px auto;padding:0 14px}.notice{background:#fff7df;border:1px solid #f1d58b;padding:12px;border-radius:12px;font-size:13px;line-height:1.6}
+nav{display:flex;gap:8px;overflow:auto;margin:16px 0}button{border:0;border-radius:10px;padding:11px 14px;background:#e5edf6;color:#19324e;font-weight:650;cursor:pointer;white-space:nowrap}
+button.active,.primary{background:var(--blue);color:white}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{background:white;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}.metric small{color:var(--muted)}.metric strong{display:block;font-size:25px;margin-top:5px}
+h2{font-size:19px;margin:5px 0 14px}label{display:block;font-size:13px;font-weight:650;margin:10px 0 5px}
+input,select{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:9px;background:white;font:inherit}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.result{background:#eef5fc;padding:12px;border-radius:10px;margin-top:12px;line-height:1.8}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line)}.tablewrap{overflow:auto}
+.muted{color:var(--muted);font-size:12px}.hidden{display:none}.danger{background:#fee2e2;color:#991b1b}
+@media(max-width:600px){.grid{grid-template-columns:1fr 1fr}.row{grid-template-columns:1fr}main{margin-top:12px}.card{padding:13px}}
+</style></head>
+<body>
+<header><h1>রফিক হোন্ডা</h1><p>ভালুকজান বাজার, ফুলবাড়িয়া, ময়মনসিংহ · শোরুম ম্যানেজমেন্ট</p></header>
+<main>
+<div class="notice"><b>প্রাথমিক নমুনা:</b> এই ফাইলটি শুধু ইন্টারফেস ও কিস্তির হিসাবের ডেমো। তথ্য এই ব্রাউজারেই অস্থায়ীভাবে থাকে; এটি নিরাপদ অনলাইন ডেটাবেস, লগইন বা SMS নয়। প্রকৃত কাস্টমারের তথ্য দেওয়ার আগে ডেটাবেস ও অ্যাক্সেস নিয়ন্ত্রণ যুক্ত করতে হবে।</div>
+<nav id="nav">
+<button class="active" data-page="home">ড্যাশবোর্ড</button><button data-page="sale">নতুন বিক্রি</button><button data-page="customers">কাস্টমার তালিকা</button><button data-page="stock">বাইক স্টক</button><button data-page="reports">রিপোর্ট</button>
+</nav>
+<section id="home" class="page">
+<div class="grid">
+<div class="card metric"><small>ডেমো বিক্রির সংখ্যা</small><strong id="count">০</strong></div>
+<div class="card metric"><small>মোট বিক্রয়মূল্য</small><strong id="total">৳০</strong></div>
+<div class="card metric"><small>কিস্তিতে বিক্রি</small><strong id="installments">০</strong></div>
+<div class="card metric"><small>ডেমো বকেয়া</small><strong id="due">৳০</strong></div>
+</div>
+<div class="card"><h2>শুরু করার নির্দেশনা</h2><p>১. নতুন বিক্রির ফর্মে কাস্টমার ও বাইকের তথ্য দিন।<br>২. নগদ অথবা ডাউন পেমেন্টসহ কিস্তি নির্বাচন করুন।<br>৩. কিস্তির মেয়াদ নিজের মতো মাসে লিখুন।<br>৪. বাস্তব ব্যবহারের আগে ক্লাউড ডেটাবেস ও নিরাপদ লগইন স্থাপন করুন।</p></div>
+</section>
+<section id="sale" class="page hidden">
+<div class="card"><h2>নতুন বাইক বিক্রি</h2>
+<form id="saleForm">
+<label>কাস্টমারের নাম</label><input id="customer" required>
+<label>মোবাইল নম্বর</label><input id="phone" inputmode="tel" required placeholder="01XXXXXXXXX">
+<label>Honda মডেল</label><input id="model" required placeholder="যেমন: Honda Shine 100">
+<div class="row"><div><label>ইঞ্জিন নম্বর</label><input id="engine"></div><div><label>চেসিস নম্বর</label><input id="chassis"></div></div>
+<label>বিক্রির ধরন</label><select id="kind"><option value="cash">নগদ বিক্রি</option><option value="installment">ডাউন পেমেন্ট দিয়ে কিস্তি</option></select>
+<label>বিক্রয়মূল্য (টাকা)</label><input id="price" type="number" min="1" required value="120000">
+<div id="instFields"><label>ডাউন পেমেন্ট (টাকা)</label><input id="down" type="number" min="0" value="30000">
+<div class="row"><div><label>কিস্তির মেয়াদ (মাস)</label><input id="months" type="number" min="1" value="12"></div><div><label>প্রথম কিস্তির তারিখ</label><input id="firstDate" type="date"></div></div>
+<label>মাসিক কিস্তি (টাকা) — ফাঁকা রাখলে বাকি টাকা সমান ভাগ হবে</label><input id="monthly" type="number" min="1" placeholder="স্বয়ংক্রিয় হিসাব">
+</div>
+<div class="result" id="calc">বাকি: ৳৯০,০০০ · আনুমানিক মাসিক: ৳৭,৫০০</div>
+<button class="primary" type="submit" style="margin-top:14px">ডেমো রেকর্ড যোগ করুন</button>
+</form></div></section>
+<section id="customers" class="page hidden"><div class="card"><h2>কাস্টমার ও বিক্রির তালিকা</h2><div class="tablewrap"><table><thead><tr><th>নাম</th><th>মোবাইল</th><th>বাইক</th><th>ধরন</th><th>বকেয়া</th></tr></thead><tbody id="rows"></tbody></table></div><p class="muted" id="empty">এখনো কোনো ডেমো রেকর্ড নেই।</p></div></section>
+<section id="stock" class="page hidden"><div class="card"><h2>Honda বাইক স্টক</h2><p>এই সংস্করণে স্টক মডিউলটি কাঠামো হিসেবে আছে। পরবর্তী সংস্করণে মডেল, রং, ক্রয়মূল্য, বিক্রয়মূল্য, ইঞ্জিন ও চেসিস নম্বরসহ ইনভেন্টরি যুক্ত হবে।</p></div></section>
+<section id="reports" class="page hidden"><div class="card"><h2>রিপোর্ট</h2><p>ডেমো বিক্রির সারাংশ নিচে দেখানো হবে। পূর্ণ দৈনিক/মাসিক রিপোর্ট, আদায় খাতা, লাভ-ক্ষতি ও প্রিন্টযোগ্য ইনভয়েস ডেটাবেস সংযুক্তির পর যুক্ত হবে।</p><p id="summary"></p></div></section>
+</main>
+<script>
+const $=id=>document.getElementById(id), money=n=>'৳'+Number(n||0).toLocaleString('en-BD');
+let sales=[];
+document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));$(b.dataset.page).classList.remove('hidden')});
+function updateCalc(){let price=+$('price').value||0,down=+$('down').value||0,months=Math.max(1,+$('months').value||1),due=Math.max(0,price-down),monthly=+$('monthly').value||Math.ceil(due/months);$('instFields').style.display=$('kind').value==='installment'?'block':'none';$('calc').textContent=$('kind').value==='cash'?'নগদ বিক্রি: '+money(price):'বাকি: '+money(due)+' · আনুমানিক মাসিক: '+money(monthly)+' · শেষ কিস্তিতে সমন্বয় হবে';}
+['kind','price','down','months','monthly'].forEach(id=>$(id).addEventListener('input',updateCalc));updateCalc();
+$('saleForm').onsubmit=e=>{e.preventDefault();let price=+$('price').value,kind=$('kind').value,down=kind==='cash'?price:+$('down').value,months=kind==='cash'?0:+$('months').value,due=price-down,monthly=kind==='cash'?0:(+$('monthly').value||Math.ceil(due/months));if(kind==='installment'&&(down>=price||months<1||down<0)){alert('ডাউন পেমেন্ট বিক্রয়মূল্যের চেয়ে কম এবং মেয়াদ ১ মাস বা বেশি হতে হবে।');return}sales.push({name:$('customer').value,phone:$('phone').value,model:$('model').value,kind,price,down,due,months,monthly,engine:$('engine').value,chassis:$('chassis').value});render();e.target.reset();$('price').value=120000;$('down').value=30000;$('months').value=12;updateCalc();alert('ডেমো রেকর্ড যোগ হয়েছে। এটি স্থায়ী বা অনলাইন সংরক্ষণ নয়।')};
+function render(){$('count').textContent=sales.length;$('total').textContent=money(sales.reduce((a,x)=>a+x.price,0));$('installments').textContent=sales.filter(x=>x.kind==='installment').length;$('due').textContent=money(sales.reduce((a,x)=>a+x.due,0));$('rows').innerHTML=sales.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.phone)}</td><td>${esc(x.model)}</td><td>${x.kind==='cash'?'নগদ':'কিস্তি'}</td><td>${money(x.due)}</td></tr>`).join('');$('empty').style.display=sales.length?'none':'block';$('summary').textContent='মোট রেকর্ড: '+sales.length+' · মোট বিক্রি: '+money(sales.reduce((a,x)=>a+x.price,0))+' · মোট বকেয়া: '+money(sales.reduce((a,x)=>a+x.due,0))}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+</script></body></html>
